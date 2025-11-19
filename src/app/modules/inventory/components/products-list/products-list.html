@@ -1,0 +1,56 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Inventario de Productos</h2>
+    <button class="btn btn-primary" (click)="newProduct()">
+      <i class="bi bi-plus-circle"></i> Nuevo Producto
+    </button>
+  </div>
+
+  <div class="mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Buscar producto..."
+      [(ngModel)]="searchTerm"
+    />
+  </div>
+
+  <div *ngIf="loading" class="text-center mt-4">
+    <div class="spinner-border" role="status"></div>
+    <p class="mt-2">Cargando productos...</p>
+  </div>
+
+  <table *ngIf="!loading && filteredProducts.length > 0" class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Categoría</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of filteredProducts">
+        <td>{{ p.code }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.categoryId }}</td>
+        <td>{{ p.price | currency:'COP':'symbol-narrow' }}</td>
+        <td>{{ p.stock }}</td>
+        <td class="text-center">
+          <button class="btn btn-sm btn-warning me-2" (click)="editProduct(p.id)">
+            <i class="bi bi-pencil"></i>
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="deleteProduct(p.id)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && filteredProducts.length === 0" class="alert alert-info mt-3">
+    No se encontraron productos.
+  </div>
+</div>

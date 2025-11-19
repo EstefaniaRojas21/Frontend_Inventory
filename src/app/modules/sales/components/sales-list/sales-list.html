@@ -1,0 +1,31 @@
+<div class="sales-list">
+  <h2>Ventas</h2>
+
+  <button (click)="newSale()">Nueva venta</button>
+
+  <table *ngIf="!loading">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Total</th>
+        <th>Fecha</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sale of sales">
+        <td>{{ sale.id }}</td>
+        <td>{{ sale.customerName }}</td>
+        <td>{{ sale.total | currency:'USD' }}</td>
+        <td>{{ sale.date | date }}</td>
+        <td>
+          <button (click)="editSale(sale.id!)">Editar</button>
+          <button (click)="deleteSale(sale.id!)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="loading">Cargando ventas...</p>
+</div>
