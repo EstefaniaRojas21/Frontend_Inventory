@@ -1,1 +1,46 @@
-<p>categories-list works!</p>
+<div class="container mt-4">
+
+  <div class="d-flex align-items-center mb-3">
+    <h2>Categorías</h2>
+
+    <button class="btn btn-primary ms-auto" (click)="newCategory()">
+      <i class="bi bi-plus-circle"></i> Nueva Categoría
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="text-center mt-4">
+    <div class="spinner-border"></div>
+    <p>Cargando categorías...</p>
+  </div>
+
+  <table *ngIf="!loading && categories.length > 0" class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let c of categories">
+        <td>{{ c.name }}</td>
+        <td>{{ c.description }}</td>
+        <td class="text-center">
+            <button class="btn btn-sm btn-warning me-2" (click)="editCategory(c.id)">
+            <i class="bi bi-pencil"></i>
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="deleteCategory(c.id)">
+            <i class="bi bi-trash"></i>
+            </button>
+        </td>
+        </tr>
+    </tbody>
+    </table>
+
+  <div *ngIf="!loading && categories.length === 0" class="alert alert-info mt-3">
+    No hay categorías registradas.
+  </div>
+
+</div>

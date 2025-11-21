@@ -2,6 +2,7 @@
   <h3>{{ isEdit ? 'Editar Producto' : 'Nuevo Producto' }}</h3>
 
   <form [formGroup]="form" (ngSubmit)="save()">
+    
     <div class="mb-3">
       <label class="form-label">Código</label>
       <input type="text" class="form-control" formControlName="code" required />
@@ -22,9 +23,30 @@
       <input type="number" class="form-control" formControlName="quantity" required />
     </div>
 
+    <div class="mb-3">
+      <label class="form-label">Categoría</label>
+      <select class="form-select" formControlName="category_id">
+        <option value="" disabled selected>Seleccione una categoría</option>
+        <option *ngFor="let c of categories" [value]="c.id">
+          {{ c.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Proveedor</label>
+      <select class="form-select" formControlName="supplier_id">
+        <option value="" disabled selected>Seleccione un proveedor</option>
+        <option *ngFor="let s of suppliers" [value]="s.id">
+          {{ s.name }}
+        </option>
+      </select>
+    </div>
+
     <button class="btn btn-success me-2" type="submit" [disabled]="form.invalid">
       {{ isEdit ? 'Actualizar' : 'Guardar' }}
     </button>
+
     <button class="btn btn-secondary" type="button" (click)="cancel()">Cancelar</button>
   </form>
 </div>

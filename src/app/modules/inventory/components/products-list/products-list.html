@@ -16,7 +16,7 @@
   </div>
 
   <div *ngIf="loading" class="text-center mt-4">
-    <div class="spinner-border" role="status"></div>
+    <div class="spinner-border"></div>
     <p class="mt-2">Cargando productos...</p>
   </div>
 
@@ -26,26 +26,35 @@
         <th>Código</th>
         <th>Nombre</th>
         <th>Categoría</th>
+        <th>Proveedor</th>
         <th>Precio</th>
         <th>Stock</th>
         <th class="text-center">Acciones</th>
       </tr>
     </thead>
+
     <tbody>
       <tr *ngFor="let p of filteredProducts">
         <td>{{ p.code }}</td>
         <td>{{ p.name }}</td>
-        <td>{{ p.categoryId }}</td>
+
+        <td>{{ getCategoryName(p.categoryId) }}</td>
+        <td>{{ getSupplierName(p.supplierId) }}</td>
+
+
         <td>{{ p.price | currency:'COP':'symbol-narrow' }}</td>
         <td>{{ p.stock }}</td>
+
         <td class="text-center">
           <button class="btn btn-sm btn-warning me-2" (click)="editProduct(p.id)">
             <i class="bi bi-pencil"></i>
           </button>
+
           <button class="btn btn-sm btn-danger" (click)="deleteProduct(p.id)">
             <i class="bi bi-trash"></i>
           </button>
         </td>
+
       </tr>
     </tbody>
   </table>

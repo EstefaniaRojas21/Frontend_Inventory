@@ -15,6 +15,18 @@ export const routes: Routes = [
       import('./modules/inventory/inventory-routing-module').then(m => m.INVENTORY_ROUTES)
   },
   {
+    path: 'categorias',
+    loadChildren: () =>
+      import('./modules/inventory/categories-routing-module')
+        .then(m => m.CATEGORIES_ROUTES)
+  },
+  {
+    path: 'proveedores',
+    loadChildren: () =>
+      import('./modules/inventory/supplier-routing-module')
+        .then(m => m.SUPPLIER_ROUTES)
+  },
+  {
     path: 'sales',
     children: SALES_ROUTES
   },
