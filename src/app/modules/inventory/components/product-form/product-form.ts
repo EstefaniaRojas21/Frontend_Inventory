@@ -24,7 +24,7 @@ export class ProductForm implements OnInit {
   categories: any[] = [];
   suppliers: any[] = [];
 
-  private baseUrl = environment.apiUrl;
+  private baseUrl = environment.inventoryApi;
 
   constructor(
     private fb: FormBuilder,

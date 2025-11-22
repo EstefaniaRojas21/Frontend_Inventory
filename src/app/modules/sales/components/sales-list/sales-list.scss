@@ -1,0 +1,35 @@
+/* contenedor del buscador */
+.search-input {
+  width: 320px;
+}
+
+/* modal de confirmación personalizado (sin usar bootstrap.js) */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1040;
+}
+
+/* modal centrado */
+.confirm-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+  padding: 1rem;
+}
+
+.confirm-card {
+  width: 100%;
+  max-width: 520px;
+  background: #fff;
+  border-radius: .5rem;
+  overflow: hidden;
+}
+
+.confirm-body {
+  padding: 1.25rem;
+}

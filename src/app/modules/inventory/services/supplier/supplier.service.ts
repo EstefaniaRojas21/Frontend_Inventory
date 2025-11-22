@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class SupplierService {
-  private baseUrl = `${environment.apiUrl}/api/suppliers`; // <-- exactamente así
+  private baseUrl = `${environment.inventoryApi}/api/suppliers`; // <-- exactamente así
 
   constructor(private http: HttpClient) {}
 

@@ -1,7 +1,9 @@
 import { Routes } from '@angular/router';
 import { INVENTORY_ROUTES } from './modules/inventory/inventory-routing-module';
 import { SALES_ROUTES } from './modules/sales/sales-routing-module';
+import { PAYMENT_METHODS_ROUTES } from './modules/sales/payment-methods-routing';
 import { ORDERS_ROUTES } from './modules/orders/orders-routing-module';
+import { SALES_ITEMS_ROUTES } from './modules/sales/sale-items-routing-module';
 
 export const routes: Routes = [
   {
@@ -28,10 +30,20 @@ export const routes: Routes = [
   },
   {
     path: 'sales',
-    children: SALES_ROUTES
+     loadChildren: () =>
+      import('./modules/sales/sales-routing-module').then(m => m.SALES_ROUTES)
   },
   {
-    path: 'orders',
-    children: ORDERS_ROUTES
-  }
+  path: 'payment',
+  loadChildren: () =>
+    import('./modules/sales/payment-methods-routing')
+      .then(m => m.PAYMENT_METHODS_ROUTES)
+},
+ {
+  path: 'salesItems',
+  loadChildren: () =>
+    import('./modules/sales/sale-items-routing-module')
+      .then(m => m.SALES_ITEMS_ROUTES)
+}
+
 ];

@@ -96,5 +96,8 @@
       }
     }
   },
-  "defaultProject": "gestion-inventario-frontend"
+  "defaultProject": "gestion-inventario-frontend",
+  "cli": {
+    "analytics": false
+  }
 }

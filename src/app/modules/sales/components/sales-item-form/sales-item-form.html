@@ -1,0 +1,30 @@
+<div class="container mt-4">
+
+  <h2>{{ itemId ? 'Editar Item' : 'Agregar Item' }}</h2>
+
+  <div class="mb-3">
+    <label>Producto (ID)</label>
+    <input type="number" [(ngModel)]="form.product_id" class="form-control" />
+  </div>
+
+  <div class="mb-3">
+    <label>Cantidad</label>
+    <input type="number" [(ngModel)]="form.quantity" (input)="updateSubtotal()" class="form-control" />
+  </div>
+
+  <div class="mb-3">
+    <label>Precio Unitario</label>
+    <input type="number" [(ngModel)]="form.unit_price" (input)="updateSubtotal()" class="form-control" />
+  </div>
+
+  <div class="mb-3">
+    <label>Subtotal</label>
+    <input type="number" [(ngModel)]="form.subtotal" class="form-control" readonly />
+  </div>
+
+  <button class="btn btn-primary me-2" (click)="save()">
+    {{ itemId ? 'Actualizar' : 'Agregar' }}
+  </button>
+  <button class="btn btn-secondary" (click)="cancel()">Cancelar</button>
+
+</div>

@@ -1,0 +1,54 @@
+<div class="container mt-4">
+
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h4 class="m-0">
+        {{ editing ? 'Editar Venta' : 'Registrar Venta' }}
+      </h4>
+    </div>
+
+    <div class="card-body">
+
+      <form [formGroup]="form" (ngSubmit)="save()">
+
+        <div class="mb-3">
+          <label class="form-label">Nombre del Cliente</label>
+          <input formControlName="customer_name" class="form-control" placeholder="Ingrese el nombre del cliente">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input formControlName="customer_email" class="form-control" placeholder="correo@example.com">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Total</label>
+          <input type="number" formControlName="total_amount" class="form-control" placeholder="Valor total de la venta">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Método de Pago</label>
+          <select formControlName="payment_method_id" class="form-select">
+            <option value="">Seleccione...</option>
+            <option *ngFor="let m of paymentMethods" [value]="m.id">
+              {{ m.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="d-flex justify-content-end mt-4">
+          <button type="button" class="btn btn-secondary me-2" (click)="cancel()">
+            Cancelar
+          </button>
+
+          <button type="submit" class="btn btn-primary">
+            Guardar
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</div>
