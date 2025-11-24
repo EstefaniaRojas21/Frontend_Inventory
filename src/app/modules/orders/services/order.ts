@@ -1,40 +1,33 @@
+// src/app/modules/orders/services/orders.service.ts
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { ApiService } from '../../../core/services/api';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
-export interface Order {
-  id?: number;
-  customer_name: string;
-  order_date: string;
-  status: string;
-  total: number;
-}
+@Injectable({ providedIn: 'root' })
+export class OrdersService {
+  private apiUrl = `${environment.ordersApi}/orders`;
 
-@Injectable({
-  providedIn: 'root'
-})
-export class OrderService {
-  private endpoint = 'orders'; // <- endpoint Flask correspondiente
+  constructor(private http: HttpClient) {}
 
-  constructor(private api: ApiService) {}
+  
 
-  getAll(): Observable<Order[]> {
-    return this.api.get<Order[]>(`${this.endpoint}/`);
+  getAll() {
+    return this.http.get<any[]>(this.apiUrl);
   }
 
-  getById(id: number): Observable<Order> {
-    return this.api.get<Order>(`${this.endpoint}/${id}/`);
+  getById(id: number) {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 
-  create(order: Order): Observable<Order> {
-    return this.api.post<Order>(`${this.endpoint}/`, order);
+  create(data: any) {
+    return this.http.post(`${this.apiUrl}/`, data);
   }
 
-  update(id: number, order: Order): Observable<Order> {
-    return this.api.put<Order>(`${this.endpoint}/${id}/`, order);
+  update(id: number, data: any) {
+    return this.http.put(`${this.apiUrl}/${id}`, data);
   }
 
-  delete(id: number): Observable<void> {
-    return this.api.delete<void>(`${this.endpoint}/${id}/`);
+  delete(id: number) {
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

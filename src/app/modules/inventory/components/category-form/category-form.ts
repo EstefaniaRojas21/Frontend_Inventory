@@ -8,7 +8,8 @@ import { CategoryService } from '../../services/category/category.service';
   selector: 'app-category-form',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './category-form.html'
+  templateUrl: './category-form.html',
+  styleUrls: ['./category-form.scss']
 })
 export class CategoryFormComponent implements OnInit {
   form!: FormGroup;

@@ -7,7 +7,8 @@ import { CategoryService } from '../../services/category/category.service';
   selector: 'app-categorias-list',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './categories-list.html'
+  templateUrl: './categories-list.html',
+  styleUrls: ['./categories-list.scss']
 })
 export class CategoriesListComponent implements OnInit {
 

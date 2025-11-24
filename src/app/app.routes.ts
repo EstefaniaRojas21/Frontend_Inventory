@@ -44,6 +44,12 @@ export const routes: Routes = [
   loadChildren: () =>
     import('./modules/sales/sale-items-routing-module')
       .then(m => m.SALES_ITEMS_ROUTES)
+},
+{
+  path: 'orders',
+  loadChildren: () =>
+    import('./modules/orders/orders-routing-module')
+      .then(m => m.ORDERS_ROUTES)
 }
 
 ];
